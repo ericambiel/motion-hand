@@ -23,7 +23,8 @@ Marque esse projeto com uma estrela 🌟
 
 - Titles List
     - [x] Campo para pesquisa não deve travar ao digitar termo de pesquisa
-    - [ ] Deve desenhar mãos na tela e fazer com que elementos em segundo plano continuem sendo clicáveis 🙌
+    - [x] Elementos em segundo plano continuem sendo clicáveis após canvas
+    - [X] Deve capturar movimentos das mãos e desenha-las na tela usando *Canvas* 🙌
     - [x] Deve disparar scroll up quando usar a palma das mãos abertas 🖐
     - [x] Deve disparar scroll down quando usar a palma das mãos fechadas ✊
     - [ ] Deve disparar click no elemento mais próximo quando usar gesto de pinça 🤏🏻

@@ -1,5 +1,3 @@
-import { gesturesString, knownGestures } from '../util/gestures.js';
-
 export default class HandGestureService {
   #gestureEstimator;
 
@@ -9,10 +7,19 @@ export default class HandGestureService {
 
   #detector = null;
 
-  constructor({ fingerpose, handPoseDetection, handsVersion }) {
+  #gesturesString;
+
+  constructor({
+    fingerpose,
+    handPoseDetection,
+    handsVersion,
+    gesturesString,
+    knownGestures,
+  }) {
     this.#gestureEstimator = new fingerpose.GestureEstimator(knownGestures);
     this.#handPoseDetection = handPoseDetection;
     this.#handsVersion = handsVersion;
+    this.#gesturesString = gesturesString;
   }
 
   /**
@@ -42,7 +49,7 @@ export default class HandGestureService {
         keypoint => keypoint.name === 'index_finger_tip',
       );
 
-      console.log('detected', gesturesString[result.name]);
+      console.log('detected', this.#gesturesString[result.name]);
       yield { event: result.name, x, y };
     }
   }
