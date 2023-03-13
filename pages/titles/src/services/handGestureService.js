@@ -30,7 +30,7 @@ export default class HandGestureService {
   async estimate(keypoints3D) {
     const predictions = await this.#gestureEstimator.estimate(
       this.#getLandMarksFromKeypoints(keypoints3D),
-      10, // Precentage reability
+      9, // Percentage reability
     );
 
     return predictions.gestures;
@@ -39,12 +39,14 @@ export default class HandGestureService {
   async *detectGestures(predications) {
     for (const hand of predications) {
       if (!hand.keypoints3D) continue;
+
       const gestures = await this.estimate(hand.keypoints3D);
       if (!gestures.length) continue;
 
       const result = gestures.reduce((previous, current) =>
         previous.score > current.score ? previous : current,
       );
+
       const { x, y } = hand.keypoints.find(
         keypoint => keypoint.name === 'index_finger_tip',
       );
